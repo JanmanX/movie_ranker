@@ -24,6 +24,7 @@ header .tag { color: var(--muted); font-size: 14px; }
 .panel {
   background: var(--panel); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow);
   overflow: clip; backdrop-filter: blur(8px);
+  margin-bottom: 0; /* Remove any default margin if present */
 }
 .panel .inner { padding: 14px 16px; }
 
@@ -58,7 +59,7 @@ input[type="file"], select, input[type="number"], input[type="text"] {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 1em 0;
+    margin: 1em 0 2.5em 0; /* increased bottom margin for spacing */
     background: #fff;
     color: #000;
     font-family: inherit;

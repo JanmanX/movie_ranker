@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Movie Rater</title>
-  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎬</text></svg>">
+  <title>Movie Ranker</title>
+  <link rel="shortcut icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎬</text></svg>">
   <!-- PapaParse for robust CSV parse/unparse -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -42,62 +45,68 @@
       </div>
     </section>
 
-    <div class="grid">
-      <section class="panel">
-        <div class="inner">
-          <h2 style="margin:6px 0 12px 0;font-size:18px;">Current matchup</h2>
-          <div id="matchup" class="matchup hidden">
-            <div class="card" id="leftCard">
-              <span class="pill" id="leftElo">ELO: —</span>
-              <h3 id="leftTitle">—</h3>
-              <div style="display:flex; gap:8px; margin-top:auto;">
-                <button class="btn primary" id="btnLeft">Pick Left</button>
-                <button class="btn" id="btnTie">Tie</button>
-              </div>
-            </div>
-            <div class="card" id="rightCard">
-              <span class="pill" id="rightElo">ELO: —</span>
-              <h3 id="rightTitle">—</h3>
-              <div style="display:flex; gap:8px; margin-top:auto;">
-                <button class="btn primary" id="btnRight">Pick Right</button>
-                <button class="btn" id="btnSkip">Skip</button>
-              </div>
-            </div>
-          </div>
-          <div id="emptyState" class="inner" style="text-align:center; color: var(--muted);">
-            <p>Import a CSV to begin. At minimum, include a <code>title</code> column. Optionally include an <code>elo</code> column.</p>
-            <p>Example CSV headers: <code>title,year,elo</code></p>
-          </div>
-          <div style="margin-top: 10px; display:flex; gap:8px;">
-            <button id="btnStart" class="btn primary" disabled>Start rating</button>
-            <button id="btnUndo" class="btn ghost" disabled>Undo last</button>
-          </div>
-        </div>
-      </section>
+    <div style="height: 24px;"></div>
 
-      <section class="panel">
-        <div class="inner">
-          <h2 style="margin:6px 0 12px 0;font-size:18px;">Movies</h2>
-          <div style="overflow:auto; max-height: 520px;">
-            <table id="moviesTable">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Title</th>
-                  <th>ELO</th>
-                  <th>Played</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+    <section class="panel">
+      <div class="inner">
+        <h2 style="margin:6px 0 12px 0;font-size:18px;">Current matchup</h2>
+        <div id="matchup" class="matchup hidden">
+          <div class="card" id="leftCard">
+            <span class="pill" id="leftElo">ELO: —</span>
+            <h3 id="leftTitle">—</h3>
+            <div style="display:flex; gap:8px; margin-top:auto;">
+              <button class="btn primary" id="btnLeft">Pick Left</button>
+              <button class="btn" id="btnTie">Tie</button>
+            </div>
+          </div>
+          <div class="card" id="rightCard">
+            <span class="pill" id="rightElo">ELO: —</span>
+            <h3 id="rightTitle">—</h3>
+            <div style="display:flex; gap:8px; margin-top:auto;">
+              <button class="btn primary" id="btnRight">Pick Right</button>
+              <button class="btn" id="btnSkip">Skip</button>
+            </div>
           </div>
         </div>
-      </section>
-    </div>
+        <div id="emptyState" class="inner" style="text-align:center; color: var(--muted);">
+          <p>Import a CSV to begin. At minimum, include a <code>title</code> column. Optionally include an
+            <code>elo</code>
+            column.</p>
+          <p>Example CSV headers: <code>title,year,elo</code></p>
+        </div>
+        <div style="margin-top: 10px; display:flex; gap:8px;">
+          <button id="btnStart" class="btn primary" disabled>Start rating</button>
+          <button id="btnUndo" class="btn ghost" disabled>Undo last</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add spacing between panels using a spacer div -->
+    <div style="height: 24px;"></div>
+
+    <section class="panel">
+      <div class="inner">
+        <h2 style="margin:6px 0 12px 0;font-size:18px;">Movies</h2>
+        <div style="overflow:auto; max-height: 520px;">
+          <table id="moviesTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>ELO</th>
+                <th>Played</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
     <p class="footer">Data lives only in your browser. Nothing is uploaded anywhere.</p>
   </div>
 
   <script src="main.js"></script>
 </body>
+
 </html>
